@@ -1,0 +1,13 @@
+<persistence>
+    <persistence-unit name="AppDataSource" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>db/oradb</jta-data-source>
+        <non-jta-data-source>db/oradb</non-jta-data-source>
+        <properties>
+            <property name="eclipselink.target-server" value="WebLogic_10" />
+            <property name="eclipselink.logging.level" value="FINEST" />
+            <property name="eclipselink.logging.logger" value="JavaLogger" />
+        </properties>
+        <class>it.fl.poc.jsondate.entities.Record</class>
+    </persistence-unit>
+</persistence>
