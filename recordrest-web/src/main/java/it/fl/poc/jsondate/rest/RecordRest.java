@@ -3,8 +3,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
-import javax.ejb.Local;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -17,14 +15,13 @@ import javax.ws.rs.core.*;
 import it.fl.poc.jsondate.entities.Record;
 
 @Stateless
-@Local
 @Path("/record")
 @Produces(MediaType.APPLICATION_JSON)
 public class RecordRest {
-    private final Logger logger = Logger.getLogger("RecordRest");
  
-    @PersistenceContext(unitName = "AppDataSource")
+    @PersistenceContext(unitName = "RecordJPA")
     private EntityManager em;
+    private final Logger logger = Logger.getLogger("RecordRest");
   
     // public RecordRest(){
     //     logger.info("Constructor");
@@ -38,7 +35,6 @@ public class RecordRest {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @TransactionAttribute(TransactionAttributeType.NEVER)
     public List<Record> getAllRecords(){
         List<Record> entityList = new Vector<Record>();
         if (em != null){
@@ -52,11 +48,17 @@ public class RecordRest {
     }
 
     @GET
-    @Path("/{record}")
+    @Path("{record}")
     public Record getRecord(@PathParam("record") int id){
             TypedQuery<Record> query = em.createNamedQuery("Record.get", Record.class);
             List<Record> entityList = query.setParameter("id", id).getResultList();
             return entityList.get(0);
     }
-
+    
+    @GET
+    @Path("/ping")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String ping(){
+        return "pong";
+    }
 }

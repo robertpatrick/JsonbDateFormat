@@ -8,18 +8,12 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import it.fl.poc.jsondate.utils.JacksonTimestampDeserializer;
-import it.fl.poc.jsondate.utils.JacksonTimestampSerializer;
-
 /*
  * https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/ejbad/using_toplink.html#GUID-9BC674DF-7DF1-413C-91AC-667315E45610
  */
 
 @Entity
-@Table(name="APP_TABLE")
+@Table(name="APP_TABLE2")
 @NamedQuery(name="Record.findAll", query="SELECT * from APP_TABLE")
 @NamedQuery(name="Record.findById", query="SELECT * from APP_TABLE WHERE id == :id")
 public class Record implements Serializable {
@@ -27,7 +21,7 @@ public class Record implements Serializable {
 
     private String id;
     private Timestamp timestamp;
-    private Date date;
+    private Date adate;
 
     // public Record(String id) {
     //     this.setId(id);
@@ -70,19 +64,19 @@ public class Record implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setAdate(Timestamp adate) {
+        this.adate = adate;
     }
 
-    public Timestamp getDate() {
-        System.err.println("getDate() - " + this.timestamp);
+    public Date getAdate() {
+        System.err.println("getDate() - " + this.adate);
         try {
             throw new Exception("getDate exception for debuggging.");
         } catch (Exception e) {
             System.err.println(e);
             e.printStackTrace(System.err);
         }
-        return date;
+        return adate;
     }
 
 }

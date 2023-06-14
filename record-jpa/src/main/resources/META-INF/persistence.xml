@@ -1,5 +1,9 @@
+<!-- 
+ - [java - persistence.xml different transaction-type attributes - Stack Overflow](https://stackoverflow.com/questions/17331024/persistence-xml-different-transaction-type-attributes) 
+-->
+
 <persistence>
-    <persistence-unit name="AppDataSource" transaction-type="JTA">
+    <persistence-unit name="RecordJPA" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>db/oradb</jta-data-source>
         <non-jta-data-source>db/oradb</non-jta-data-source>
