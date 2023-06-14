@@ -7,7 +7,7 @@ import javax.ws.rs.core.*;
 public class Ping {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON) 
+    @Produces(MediaType.TEXT_PLAIN) 
     public Object ping(){
         return "pong";
     }

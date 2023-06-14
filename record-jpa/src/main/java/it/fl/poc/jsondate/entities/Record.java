@@ -3,6 +3,8 @@ package it.fl.poc.jsondate.entities;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.logging.Logger;
+
 import javax.persistence.*;
 
 /*
@@ -11,10 +13,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="APP_TABLE2")
-@NamedQuery(name="Record.findAll", query="SELECT * from APP_TABLE")
-@NamedQuery(name="Record.findById", query="SELECT * from APP_TABLE WHERE id == :id")
+@NamedQuery(name="Record.findAll", query="SELECT r FROM Record r")
+@NamedQuery(name="Record.findById", query="SELECT r FROM Record r WHERE r.id == :id")
 public class Record implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private static final Logger logger = Logger.getLogger(" it.fl.poc.jsondate.entities.Record");
+
 
     private String id;
     private Timestamp timestamp;
@@ -37,17 +42,19 @@ public class Record implements Serializable {
 
     @Id
     public String getId() {
+        logger.info("getID() - ENTERING");
         return id;
     }
 
     public void setId(String id) {
+        logger.info("setID() - ENTERING");
         this.id = id;
     }
 
     // @JsonSerialize(using = JacksonTimestampSerializer.class)
     // @JsonDeserialize(using = JacksonTimestampDeserializer.class)
     public Timestamp getTimestamp() {
-        System.err.println("getTimestamp() - " + this.timestamp);
+        logger.info("getTimestamp() - ENTERING");
         try {
             throw new Exception("getTimestamp exception for debuggging.");
         } catch (Exception e) {
@@ -58,15 +65,17 @@ public class Record implements Serializable {
     }
 
     public void setTimestamp(Timestamp timestamp) {
+        logger.info("setTimestamp() - ENTERING");
         this.timestamp = timestamp;
     }
 
     public void setAdate(Timestamp adate) {
+        logger.info("setAdate() - ENTERING");
         this.adate = adate;
     }
 
     public Date getAdate() {
-        System.err.println("getDate() - " + this.adate);
+        logger.info("getAdate() - ENTERING");
         try {
             throw new Exception("getDate exception for debuggging.");
         } catch (Exception e) {

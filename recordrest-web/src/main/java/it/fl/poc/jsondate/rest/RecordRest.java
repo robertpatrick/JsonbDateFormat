@@ -1,8 +1,10 @@
 package it.fl.poc.jsondate.rest;
+
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,29 +20,26 @@ import it.fl.poc.jsondate.entities.Record;
  */
 
 @Stateless
+@LocalBean
 @Path("/record")
 @Produces(MediaType.APPLICATION_JSON)
 public class RecordRest {
- 
+    private static final Logger logger = Logger.getLogger("RecordRest");
+    
     @PersistenceContext(unitName = "RecordJPA")
     private EntityManager em;
-    private final Logger logger = Logger.getLogger("RecordRest");
-  
-    // public RecordRest(){
-    //     logger.info("Constructor");
-    //     if (em != null){
-    //         logger.info("EntityManager: " + em);
-    //     } else {
-    //         logger.severe("EntityManager: NULL");
-    //     }
-    // }
-    
+
+    public RecordRest() {
+        logger.info("<init> - ENTERING");
+    }
+
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Record> getAllRecords(){
+    public List<Record> getAllRecords() {
+        logger.info("getAllRecords() - ENTERING");
         List<Record> entityList = new Vector<Record>();
-        if (em != null){
+        if (em != null) {
             logger.info("EntityManager: " + em);
             TypedQuery<Record> query = em.createNamedQuery("Record.findAll", Record.class);
             entityList = query.getResultList();
@@ -52,16 +51,17 @@ public class RecordRest {
 
     @GET
     @Path("{record}")
-    public Record getRecord(@PathParam("record") int id){
-            TypedQuery<Record> query = em.createNamedQuery("Record.get", Record.class);
-            List<Record> entityList = query.setParameter("id", id).getResultList();
-            return entityList.get(0);
+    public Record getRecord(@PathParam("record") int id) {
+        logger.info("getRecord() - ENTERING");
+        TypedQuery<Record> query = em.createNamedQuery("Record.get", Record.class);
+        List<Record> entityList = query.setParameter("id", id).getResultList();
+        return entityList.get(0);
     }
-    
+
     @GET
     @Path("/ping")
     @Produces(MediaType.APPLICATION_JSON)
-    public String ping(){
+    public String ping() {
         return "pong";
     }
 }
