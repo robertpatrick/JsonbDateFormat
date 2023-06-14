@@ -2,10 +2,7 @@ package it.fl.poc.jsondate.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 import javax.persistence.*;
 
 /*

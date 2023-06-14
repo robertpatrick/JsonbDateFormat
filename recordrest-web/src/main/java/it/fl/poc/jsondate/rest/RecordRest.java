@@ -4,8 +4,6 @@ import java.util.Vector;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,6 +11,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import it.fl.poc.jsondate.entities.Record;
+
+/*
+ * [Developing RESTful Web Services](https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/restf/develop-restful-service.html#GUID-E8C81B8C-9EF2-48CE-8537-6958EDDF6B51)
+ * [jakarta ee - EJB injection into JAX-RS not working - Stack Overflow](https://stackoverflow.com/questions/10872328/ejb-injection-into-jax-rs-not-working)
+ */
 
 @Stateless
 @Path("/record")

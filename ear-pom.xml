@@ -21,7 +21,7 @@
           <webModule>
               <groupId>it.fl.poc</groupId>
               <artifactId>recordrest-web</artifactId>
-            <contextRoot>/jsonbdateformat</contextRoot>
+              <!--contextRoot>/jsonbdateformat</contextRoot-->
           </webModule>
         </modules>
         </configuration>

@@ -1,14 +1,14 @@
 package it.fl.poc.jsondate.rest.application;
 
-import java.text.SimpleDateFormat;
+// import java.text.SimpleDateFormat;
 
-import javax.ws.rs.*;
-import javax.ws.rs.ext.*;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.ws.rs.core.*;
-
+// import javax.ws.rs.*;
+// import javax.ws.rs.ext.*;
+// 
+// import com.fasterxml.jackson.databind.ObjectMapper;
+// 
+// import javax.ws.rs.core.*;
+// 
 // @Provider
 // @Produces(MediaType.APPLICATION_JSON)
 // public class JacksonConfig implements ContextResolver<ObjectMapper> {
