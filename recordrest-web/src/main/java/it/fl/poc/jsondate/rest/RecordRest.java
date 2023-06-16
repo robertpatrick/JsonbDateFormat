@@ -17,6 +17,7 @@ import it.fl.poc.jsondate.entities.Record;
 /*
  * [Developing RESTful Web Services](https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/restf/develop-restful-service.html#GUID-E8C81B8C-9EF2-48CE-8537-6958EDDF6B51)
  * [jakarta ee - EJB injection into JAX-RS not working - Stack Overflow](https://stackoverflow.com/questions/10872328/ejb-injection-into-jax-rs-not-working)
+ * [25.1 Packaging CDI Applications - Java Platform, Enterprise Edition: The Java EE Tutorial (Release 7)](https://docs.oracle.com/javaee/7/tutorial/cdi-adv001.htm)
  */
 
 @Stateless
@@ -51,9 +52,9 @@ public class RecordRest {
 
     @GET
     @Path("{record}")
-    public Record getRecord(@PathParam("record") int id) {
+    public Record getRecord(@PathParam("record") String id) {
         logger.info("getRecord() - ENTERING");
-        TypedQuery<Record> query = em.createNamedQuery("Record.get", Record.class);
+        TypedQuery<Record> query = em.createNamedQuery("Record.findById", Record.class);
         List<Record> entityList = query.setParameter("id", id).getResultList();
         return entityList.get(0);
     }
