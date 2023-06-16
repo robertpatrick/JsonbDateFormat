@@ -30,6 +30,7 @@ public class Record implements Serializable {
     @Column(name = "DATE_AS_TIMESTAMP")
     private Timestamp dateAsTimestamp;
 
+    @Temporal(value=TemporalType.DATE)
     @Column(name = "DATE_AS_DATE")
     private Date dateAsDate;
 
@@ -51,7 +52,7 @@ public class Record implements Serializable {
     // }
 
     public Timestamp getTimestampAsTimestamp() {
-        logger.info("setTimestampAsTimestamp() - ENTERING");
+        logger.info("getTimestampAsTimestamp() - ENTERING");
         return timestampAsTimestamp;
     }
 
@@ -96,7 +97,7 @@ public class Record implements Serializable {
         this.dateAsDate = adate;
     }
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(value=TemporalType.DATE)
     public Date getDateAsDate() {
         logger.info("getDateAsDate() - ENTERING");
         try {

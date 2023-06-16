@@ -65,4 +65,22 @@ public class RecordRest {
     public String ping() {
         return "pong";
     }
+    
+
+    // curl -x '' -X POST http://localhost:7001/recordrest-web/resources/record/add
+    @POST
+    @Path("/add")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Record addRecord(){
+        logger.info("populate() - ENTERING");
+        Record r1 = new Record();
+        java.util.Date d = new java.util.Date();
+        r1.setId(String.valueOf(d.getTime()));
+        r1.setDateAsDate(d);
+        r1.setDateAsTimestamp(new java.sql.Timestamp(d.getTime()));
+        r1.setTimestampAsTimestamp(new java.sql.Timestamp(d.getTime()));
+        em.persist(r1);
+        return r1;
+    }
+    
 }
