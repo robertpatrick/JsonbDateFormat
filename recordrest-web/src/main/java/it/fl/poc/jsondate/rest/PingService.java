@@ -4,7 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 @Path("/ping")
-public class Ping {
+public class PingService {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN) 

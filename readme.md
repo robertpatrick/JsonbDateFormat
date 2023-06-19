@@ -1,4 +1,13 @@
 
+## Services
+
+- Ping: http://localhost:7001/recordrest-web/resources/ping
+- DateDemoService: http://localhost:7001/recordrest-web/resources/datedemo
+- RecordService: 
+  - getAll: http://localhost:7001/recordrest-web/resources/record/all
+  - add: POST http://localhost:7001/recordrest-web/resources/record/add
+  - get: http://localhost:7001/recordrest-web/resources/record/{ID}
+
 ## DB Table DDL
 
 ```sql
@@ -31,3 +40,50 @@
 | DATE_AS_DATE           | DATE          | java.util.Date     | @Temporal(DATE) | VERSION-1 | 1   | "1975-11-18T23:00:00Z[UTC]" |
 | TIMESTAMP_AS_TIMESTAMP | TIMESTAMP     | java.sql.Timestamp |                 | VERSION-1 | 1   | "1969-12-31T23:00:00Z[UTC]" |
 |                        |               |                    |                 |           |     |                             |
+
+## Results
+
+### tag:VERSION-2
+
+#### JDK 8
+
+$ curl -x '' -X POST http://localhost:7001/recordrest-web/resources/record/add
+
+```json
+{"dateAsDate":"2023-06-19T10:59:10.327Z[UTC]","dateAsTimestamp":"2023-06-19T10:59:10.327Z[UTC]","id":"1687172350327","timestampAsTimestamp":"2023-06-19T10:59:10.327Z[UTC]"}
+```
+
+$ curl -x '' -X GET http://localhost:7001/recordrest-web/resources/record/all
+
+```json
+[
+   {"dateAsDate":"1975-11-19T12:57:00Z[UTC]","dateAsTimestamp":"2023-06-14T16:55:25Z[UTC]","id":"1","timestampAsTimestamp":"1970-01-01T00:02:03.456Z[UTC]"},
+   {"dateAsDate":"1980-01-01T11:12:00Z[UTC]","dateAsTimestamp":"2023-06-12T18:47:19Z[UTC]","id":"2","timestampAsTimestamp":"0001-01-01T08:08:08.654Z[UTC]"},
+   {"dateAsDate":"2023-06-15T22:00:00Z[UTC]","dateAsTimestamp":"2023-06-16T08:35:36Z[UTC]","id":"1686904536728","timestampAsTimestamp":"2023-06-16T08:35:36.728Z[UTC]"}
+   {"dateAsDate":"2023-06-16T08:27:22Z[UTC]","dateAsTimestamp":"2023-06-16T08:27:22Z[UTC]","id":"1686904042427","timestampAsTimestamp":"1970-01-02T10:17:36.789Z[UTC]"},
+   {"dateAsDate":"2023-06-16T08:30:21Z[UTC]","dateAsTimestamp":"2023-06-16T08:30:21Z[UTC]","id":"1686904221757","timestampAsTimestamp":"2023-06-16T08:30:21.757Z[UTC]"},
+   {"dateAsDate":"2023-06-19T10:59:10.327Z[UTC]","dateAsTimestamp":"2023-06-19T10:59:10.327Z[UTC]","id":"1687172350327","timestampAsTimestamp":"2023-06-19T10:59:10.327Z[UTC]"},
+]
+```
+#### JDK 11
+
+$  curl -x '' -X POST http://localhost:7001/recordrest-web/resources/record/add
+
+```json
+{"dateAsDate":"2023-06-19T11:15:56.859Z[UTC]","dateAsTimestamp":"2023-06-19T11:15:56.859Z[UTC]","id":"1687173356859","timestampAsTimestamp":"2023-06-19T11:15:56.859Z[UTC]"}
+```
+
+$ curl -x '' -X GET http://localhost:7001/recordrest-web/resources/record/all
+
+```json
+[
+  { "dateAsDate":"1975-11-19T12:57:00Z[UTC]","dateAsTimestamp":"2023-06-14T16:55:25Z[UTC]","id":"1","timestampAsTimestamp":"1970-01-01T00:02:03.456Z[UTC]"},
+  { "dateAsDate":"1980-01-01T11:12:00Z[UTC]","dateAsTimestamp":"2023-06-12T18:47:19Z[UTC]","id":"2","timestampAsTimestamp":"0001-01-01T08:08:08.654Z[UTC]"},
+  { "dateAsDate":"2023-06-15T22:00:00Z[UTC]","dateAsTimestamp":"2023-06-16T08:35:36Z[UTC]","id":"1686904536728","timestampAsTimestamp":"2023-06-16T08:35:36.728Z[UTC]"}
+  { "dateAsDate":"2023-06-16T08:27:22Z[UTC]","dateAsTimestamp":"2023-06-16T08:27:22Z[UTC]","id":"1686904042427","timestampAsTimestamp":"1970-01-02T10:17:36.789Z[UTC]"},
+  { "dateAsDate":"2023-06-16T08:30:21Z[UTC]","dateAsTimestamp":"2023-06-16T08:30:21Z[UTC]","id":"1686904221757","timestampAsTimestamp":"2023-06-16T08:30:21.757Z[UTC]"},
+  { "dateAsDate":"2023-06-18T22:00:00Z[UTC]","dateAsTimestamp":"2023-06-19T10:59:10Z[UTC]","id":"1687172350327","timestampAsTimestamp": "2023-06-19T10:59:10.327Z[UTC]"},
+  { "dateAsDate":"2023-06-19T11:15:56.859Z[UTC]","dateAsTimestamp":"2023-06-19T11:15:56.859Z[UTC]","id":"1687173356859","timestampAsTimestamp":"2023-06-19T11:15:56.859Z[UTC]"},
+  { "dateAsDate":"2023-06-19T11:19:48.594Z[UTC]","dateAsTimestamp":"2023-06-19T11:19:48.594Z[UTC]","id":"1687173588594","timestampAsTimestamp":"2023-06-19T11:19:48.594Z[UTC]"},
+]
+```

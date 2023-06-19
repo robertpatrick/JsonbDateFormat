@@ -24,16 +24,18 @@ import it.fl.poc.jsondate.entities.Record;
 @LocalBean
 @Path("/record")
 @Produces(MediaType.APPLICATION_JSON)
-public class RecordRest {
+public class RecordService {
     private static final Logger logger = Logger.getLogger("RecordRest");
     
     @PersistenceContext(unitName = "RecordJPA")
     private EntityManager em;
 
-    public RecordRest() {
+    public RecordService() {
         logger.info("<init> - ENTERING");
     }
 
+
+    // curl -x '' http://localhost:7001/recordrest-web/resources/record/all
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -80,6 +82,7 @@ public class RecordRest {
         r1.setDateAsTimestamp(new java.sql.Timestamp(d.getTime()));
         r1.setTimestampAsTimestamp(new java.sql.Timestamp(d.getTime()));
         em.persist(r1);
+        em.flush();
         return r1;
     }
     

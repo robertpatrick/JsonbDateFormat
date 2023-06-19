@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /*
  * [Managing Entities](https://javaee.github.io/tutorial/persistence-intro004.html)
@@ -22,7 +25,7 @@ import javax.persistence.*;
 public class Record implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static final Logger logger = Logger.getLogger(" it.fl.poc.jsondate.entities.Record");
+    private static final Logger logger = Logger.getLogger("it.fl.poc.jsondate.entities.Record");
 
     @Id
     private String id;
@@ -80,8 +83,7 @@ public class Record implements Serializable {
             try {
                 throw new Exception("getDateAsTimestamp exception for debuggging.");
             } catch (Exception e) {
-                System.err.println(e);
-                e.printStackTrace(System.err);
+                logger.log(Level.INFO, "DEBUG Exception", e); 
             }
         }
         return dateAsTimestamp;
@@ -97,14 +99,16 @@ public class Record implements Serializable {
         this.dateAsDate = adate;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")  // 2023-06-19 @FL DOES NOT SEEMS TO WORK
+    @JsonbDateFormat(value = "dd/MM/yyyy")  // 2023-06-19 @FL THIS WORKS
     @Temporal(value=TemporalType.DATE)
     public Date getDateAsDate() {
         logger.info("getDateAsDate() - ENTERING");
         try {
             throw new Exception("getDateAsDate exception for debuggging.");
         } catch (Exception e) {
-            System.err.println(e);
-            e.printStackTrace(System.err);
+            logger.log(Level.INFO, "DEBUG Exception", e); 
+            //e.printStackTrace(System.err);
         }
         return dateAsDate;
     }
