@@ -34,7 +34,7 @@ public class DateObject implements Serializable{
 
   //@JsonSerialize(as = java.util.Date.class)
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")  // 2023-06-19 @FL DOES NOT SEEMS TO WORK
-  //@JsonbDateFormat(value = "dd/MM/yyyy")  // 2023-06-19 @FL THIS WORKS
+  @JsonbDateFormat(value = "dd/MM/yyyy")  // 2023-06-19 @FL THIS WORKS
   public java.util.Date getDate() {
         logger.info("@FL getDate() - ENTERING");
         try {
