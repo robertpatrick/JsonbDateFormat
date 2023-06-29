@@ -5,15 +5,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.json.bind.annotation.JsonbDateFormat;
-
-//import javax.json.bind.annotation.JsonbDateFo0rmat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class DateObject implements Serializable{
     private static final long serialVersionUID = 1L;
     
+    @JsonSerialize(as = java.util.Date.class)
+    @com.fasterxml.jackson.annotation.JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")  
     private java.util.Date date;                            // ISO_DATE (or ISO_DATE_TIME if time value specified) 
     private java.util.Calendar calendar;                    // ISO_DATE (or ISO_DATE_TIME if time value specified) 
     private java.util.GregorianCalendar gregorianCalendar;  // ISO_DATE (or ISO_DATE_TIME if time value specified) 
@@ -35,7 +34,8 @@ public class DateObject implements Serializable{
     private static final Logger logger = Logger.getLogger(CLASS_NAME);
 
   //@JsonSerialize(as = java.util.Date.class)
-  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")  // 2023-06-19 @FL DOES NOT SEEMS TO WORK
+  @JsonSerialize(as = java.util.Date.class)
+  @com.fasterxml.jackson.annotation.JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")  // 2023-06-19 @FL DOES NOT SEEMS TO WORK
   @JsonbDateFormat(value = "dd/MM/yyyy")  // 2023-06-19 @FL THIS WORKS
   public java.util.Date getDate() {
         logger.info("@FL getDate() - ENTERING");

@@ -18,8 +18,10 @@
   </properties>
 
   <modules>
+  <!--
     <module>record-jpa</module>
     <module>recordrest-web</module>
+    -->
     <module>recordrest-web-jackson</module>
     <module>ear</module>
   </modules>
