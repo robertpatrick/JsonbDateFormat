@@ -1,4 +1,4 @@
-package it.fl.poc.jsondate.rest;
+package it.fl.poc.jsondatejackson.rest;
 
 import java.util.List;
 import java.util.Vector;
@@ -31,7 +31,7 @@ public class RecordService {
     private EntityManager em;
 
     public RecordService() {
-        logger.info("<init> - ENTERING");
+        logger.info("@FL RecordService() - ENTERING");
     }
 
 
@@ -40,14 +40,14 @@ public class RecordService {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Record> getAllRecords() {
-        logger.info("getAllRecords() - ENTERING");
+        logger.info("@FL getAllRecords() - ENTERING");
         List<Record> entityList = new Vector<Record>();
         if (em != null) {
-            logger.info("EntityManager: " + em);
+            logger.info("@FL EntityManager: " + em);
             TypedQuery<Record> query = em.createNamedQuery("Record.findAll", Record.class);
             entityList = query.getResultList();
         } else {
-            logger.severe("EntityManager: NULL");
+            logger.severe("@FL EntityManager: NULL");
         }
         return entityList;
     }
@@ -55,7 +55,7 @@ public class RecordService {
     @GET
     @Path("{record}")
     public Record getRecord(@PathParam("record") String id) {
-        logger.info("getRecord() - ENTERING");
+        logger.info("@FL getRecord() - ENTERING");
         TypedQuery<Record> query = em.createNamedQuery("Record.findById", Record.class);
         List<Record> entityList = query.setParameter("id", id).getResultList();
         return entityList.get(0);
@@ -74,7 +74,7 @@ public class RecordService {
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     public Record addRecord(){
-        logger.info("populate() - ENTERING");
+        logger.info("@FL populate() - ENTERING");
         Record r1 = new Record();
         java.util.Date d = new java.util.Date();
         r1.setId(String.valueOf(d.getTime()));

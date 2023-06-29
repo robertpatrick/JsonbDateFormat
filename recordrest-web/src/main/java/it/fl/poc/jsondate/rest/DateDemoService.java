@@ -1,6 +1,5 @@
 package it.fl.poc.jsondate.rest;
 
-import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package it.fl.poc.jsondate.rest;
+package it.fl.poc.jsondatejackson.rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;

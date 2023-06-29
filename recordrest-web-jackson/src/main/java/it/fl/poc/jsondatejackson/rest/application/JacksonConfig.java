@@ -16,14 +16,14 @@ public class JacksonConfig implements ContextResolver<ObjectMapper> {
     private static final Logger logger = Logger.getLogger(CLASS_NAME);
 
      public JacksonConfig() {
-        logger.info("JacksonConfig()");
-         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        logger.info("@FL JacksonConfig()");
+         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
          mapper.setDateFormat(dateFormat);
      }
 
      @Override
      public ObjectMapper getContext(Class<?> clazz) {
-        logger.info("getContext(..)");
+        logger.info("@FL getContext(..)");
          return mapper;
      }
  }
