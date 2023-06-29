@@ -21,7 +21,7 @@
     <module>record-jpa</module>
     <module>recordrest-web</module>
     <module>recordrest-web-jackson</module>
-    <module>ear-pom.xml</module>
+    <module>ear</module>
   </modules>
 
 </project>
