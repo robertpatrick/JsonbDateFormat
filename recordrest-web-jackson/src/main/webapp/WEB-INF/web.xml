@@ -9,14 +9,11 @@
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>package it.fl.poc.jsondatejackson.rest</param-value>
         </init-param>
-        <!--
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
             <param-value>com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider,org.glassfish.jersey.jackson.JacksonFeature</param-value>
         </init-param>
-        -->
-        <!-- These parameters DO disable Yesson nad let Jackson process JSON data. 
-             But do not seems to be enough to enalbe @JsonFormat assertion.
+        <!-- These parameters seems to be ineffective . 
         --> 
         <init-param>
             <param-name>jersey.config.server.disableMoxyJson</param-name>

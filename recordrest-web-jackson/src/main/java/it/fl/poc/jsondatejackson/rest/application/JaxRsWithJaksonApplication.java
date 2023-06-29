@@ -17,7 +17,7 @@ public class JaxRsWithJaksonApplication extends ResourceConfig{
     private final Logger logger = Logger.getLogger("it.fl.poc.jsondate.rest.application.ResourceConfig");
 
     public JaxRsWithJaksonApplication(){
-        logger.info("@FL MyResourceConfig()");
+        logger.info("@FL JaxRsWithJaksonApplication()");
         
         /* 1. with `org.glassfish.jersey.jackson.JacksonFeature.class)` alone you get unformatted dates.
          * 2. Order seems to matter: 
@@ -50,8 +50,9 @@ public class JaxRsWithJaksonApplication extends ResourceConfig{
          *    at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1115)
          *    [...]
         */
-        register(com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider.class);  // NOT ENOUGH TO HAVE @JsonFormat Dates
+        
         register(org.glassfish.jersey.jackson.JacksonFeature.class);  
+        register(com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider.class);  // NOT ENOUGH TO HAVE @JsonFormat Dates
         register(DateDemoService.class);
         
     }

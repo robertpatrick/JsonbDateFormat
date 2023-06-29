@@ -23,5 +23,25 @@
     <module>recordrest-web-jackson</module>
     <module>ear-pom.xml</module>
   </modules>
-
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>2.2.6</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
