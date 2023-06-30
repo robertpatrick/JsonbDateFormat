@@ -7,11 +7,12 @@
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>package it.fl.poc.jsondatejackson.rest</param-value>
+            <param-value>package it.fl.poc.jsondatejackson.rest,com.fasterxml.jackson.jaxrs.json</param-value>
         </init-param>
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider,org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat</param-value>
+            <!--param-value>org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat</param-value-->
+            <param-value>fasterxml.jackson.annotation.JsonFormat</param-value>
         </init-param>
         <!-- These parameters seems to be ineffective . 
         --> 
