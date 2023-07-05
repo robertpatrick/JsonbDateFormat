@@ -19,16 +19,17 @@
             <param-value>org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat,it.fl.poc.jsondatejackson.rest.DateDemoService</param-value>
         </init-param>
         -->
-<!--        &lt;!&ndash; These parameters seems to be ineffective . -->
-<!--        &ndash;&gt; -->
-<!--        <init-param>-->
-<!--            <param-name>jersey.config.server.disableMoxyJson</param-name>-->
-<!--            <param-value>true</param-value>-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>jersey.config.disableJsonProcessing</param-name>-->
-<!--            <param-value>true</param-value>-->
-<!--        </init-param>-->
+        <!-- These parameters seems to be ineffective. -->
+        <!--
+        <init-param>
+            <param-name>jersey.config.server.disableMoxyJson</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.disableJsonProcessing</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        -->
     </servlet>
     <servlet-mapping>
         <servlet-name>JaxRsWithJacksonWebApplication</servlet-name>
