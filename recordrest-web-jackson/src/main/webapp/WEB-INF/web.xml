@@ -3,31 +3,36 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
     version="3.1">
     <servlet>
-        <servlet-name>JaxRsWithJecksonWebApplication</servlet-name>
+        <servlet-name>JaxRsWithJacksonWebApplication</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>package it.fl.poc.jsondatejackson.rest,com.fasterxml.jackson.jaxrs.json</param-value>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>it.fl.poc.jsondatejackson.rest.application.JaxRsWithJacksonApplication</param-value>
         </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>it.fl.poc.jsondatejackson.rest</param-value>
+        </init-param>
+        <!--
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
-            <!--param-value>org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat</param-value-->
-            <param-value>fasterxml.jackson.annotation.JsonFormat</param-value>
+            <param-value>org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat,it.fl.poc.jsondatejackson.rest.DateDemoService</param-value>
         </init-param>
-        <!-- These parameters seems to be ineffective . 
-        --> 
-        <init-param>
-            <param-name>jersey.config.server.disableMoxyJson</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <init-param>
-            <param-name>jersey.config.disableJsonProcessing</param-name>
-            <param-value>true</param-value>
-        </init-param>
+        -->
+<!--        &lt;!&ndash; These parameters seems to be ineffective . -->
+<!--        &ndash;&gt; -->
+<!--        <init-param>-->
+<!--            <param-name>jersey.config.server.disableMoxyJson</param-name>-->
+<!--            <param-value>true</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>jersey.config.disableJsonProcessing</param-name>-->
+<!--            <param-value>true</param-value>-->
+<!--        </init-param>-->
     </servlet>
     <servlet-mapping>
-        <servlet-name>JaxRsWithJecksonWebApplication</servlet-name>
-        <url-pattern>/resources3/*</url-pattern>
+        <servlet-name>JaxRsWithJacksonWebApplication</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
 </web-app>
 <!-- 

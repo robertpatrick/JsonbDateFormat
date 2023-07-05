@@ -1,52 +1,96 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>it.fl.poc</groupId>
-  <artifactId>jsonbdateformatEAR</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>ear</packaging>
+    <artifactId>jsonbdateformatEAR</artifactId>
+    <packaging>ear</packaging>
 
-  <name>jsonbdateformatEAR</name>
-   <properties>
-       <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <parent>
+        <groupId>it.fl.poc</groupId>
+        <artifactId>jsonbdateformat</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     </properties>
 
-  <build>
-    <plugins>
-      <!--
-      <plugin>
-        <artifactId>maven-ear-plugin</artifactId>
-        <configuration>
-        <modules>
-          <webModule>
-              <groupId>it.fl.poc</groupId>
-              <artifactId>recordrest-web</artifactId>
-              <contextRoot>/jsonbdateformat</contextRoot>
-          </webModule>
-        </modules>
-        </configuration>
-      </plugin>
-      -->
-    </plugins>
-  </build>
-  <dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>it.fl.poc</groupId>
+            <artifactId>recordrest-web-jackson</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        -->
+    </dependencies>
 
-    <!--
-  	<dependency>
-      <groupId>it.fl.poc</groupId>
-      <artifactId>recordrest-web</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>war</type>
-  	</dependency>
-    -->
-
-  	<dependency>
-      <groupId>it.fl.poc</groupId>
-      <artifactId>recordrest-web-jackson</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>war</type>
-  	</dependency>
-
-  </dependencies>
+    <build>
+        <finalName>jsonbdateformat</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <modules>
+                        <webModule>
+                            <groupId>it.fl.poc</groupId>
+                            <artifactId>recordrest-web-jackson</artifactId>
+                            <contextRoot>/jsonbdateformat</contextRoot>
+                        </webModule>
+                        <jarModule>
+                            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                            <artifactId>jackson-jaxrs-json-provider</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <jarModule>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-annotations</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <jarModule>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-databind</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <jarModule>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-core</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <!--
+                        <jarModule>
+                            <groupId>com.fasterxml.jackson.datatype</groupId>
+                            <artifactId>jackson-datatype-jsr310</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        -->
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
+
