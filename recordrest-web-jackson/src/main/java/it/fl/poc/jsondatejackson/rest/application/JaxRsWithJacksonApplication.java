@@ -18,6 +18,11 @@ public class JaxRsWithJacksonApplication extends ResourceConfig {
     public JaxRsWithJacksonApplication() {
         logger.info("@FL JaxRsWithJacksonApplication()");
         register(JacksonFeature.class);
+        // set priority less than 1800 to override Yesson is supposed to work
+        // without the init-param jersey.config.jsonFeature to "User Provided JacksonJsonProvider"
+        // but it does not seem to be sufficient.
+        //
+        // register(JacksonJsonProvider.class, 1700);
         register(JacksonJsonProvider.class);
         register(DateDemoService.class);
     }

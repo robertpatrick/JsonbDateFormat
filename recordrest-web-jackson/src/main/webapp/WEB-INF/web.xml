@@ -13,34 +13,13 @@
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>it.fl.poc.jsondatejackson.rest</param-value>
         </init-param>
-        <!--
         <init-param>
-            <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>org.glassfish.jersey.jackson.JacksonFeature,com.fasterxml.jackson.annotation.JsonFormat,it.fl.poc.jsondatejackson.rest.DateDemoService</param-value>
+            <param-name>jersey.config.jsonFeature</param-name>
+            <param-value>User Provided JacksonJsonProvider</param-value>
         </init-param>
-        -->
-        <!-- These parameters seems to be ineffective. -->
-        <!--
-        <init-param>
-            <param-name>jersey.config.server.disableMoxyJson</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <init-param>
-            <param-name>jersey.config.disableJsonProcessing</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        -->
     </servlet>
     <servlet-mapping>
         <servlet-name>JaxRsWithJacksonWebApplication</servlet-name>
         <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
 </web-app>
-<!-- 
-  References:
-   * https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.29/appendix-properties.html 
-   * [JAX-RS 2.0 behavior changes - IBM
-Documentation](https://www.ibm.com/docs/en/was-zos/9.0.5?topic=applications-jax-rs-20-behavior-changes)
-   * [Using Jackson as JSON provider in Jersey 2.x |
-cassiomolin](https://cassiomolin.com/2016/08/10/using-jackson-as-json-provider-in-jersey-2x/)
--->
